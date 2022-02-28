@@ -254,6 +254,8 @@ fn main() {
 
     let (completed, completed_receiver) = mpsc::channel();
 
+    // Clippy's a little high, I guess.
+    #[allow(clippy::needless_collect)]
     let worker_threads = (0..args.threads)
         .map(|_| {
             let answer_words = answer_words.clone();
